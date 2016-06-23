@@ -9,6 +9,8 @@ while number_of_disks < 1 || number_of_disks > 100
   number_of_disks = gets.chomp.to_i
 end
 
+puts "You're playing with #{number_of_disks} disks! Good luck.\n"
+
 #set up towers
 towers = [(1..(number_of_disks.to_i)).to_a.reverse, [], []]
 
@@ -83,7 +85,7 @@ def play_game(number_of_disks, towers)
         print "Tower 1: " + towers[0].to_s
         print "Tower 2: " + towers[1].to_s
         print "Tower 3: " + towers[2].to_s + "\n"
-        puts "There was an error in your input. Please try again."
+        puts "There was an error in your input. Remember to put your input in X,X format. Please try again."
         puts "Whats your next move?" 
         print "> "
         user_move = gets.chomp
