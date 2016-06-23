@@ -67,14 +67,14 @@ def render(towers, number_of_disks)
 end
 
 
+#play game!
 def play_game(number_of_disks, towers)
-  victory = false
   print "To move the top disk in one tower to the top of another tower, please enter your move in the format 1,3 with the first number being the tower to move from and the second number being the tower to move to. Enter 'q' to exit the game." + "\n"
   #While victory criteria is not met
+  victory = false
   while victory == false
     render(towers, number_of_disks)
    
-    
     #Get move and validate move for format and game rules
     errors = 1
     while errors > 0
@@ -85,10 +85,12 @@ def play_game(number_of_disks, towers)
       user_move_array = []
       make_user_move_array(user_move, user_move_array)
       check_user_quit(user_move)
-
+      
+      #error check for format and game rules
       possible_towers = (0..2).to_a
       until (possible_towers.include?(user_move_array[0].to_i) && possible_towers.include?(user_move_array[1].to_i)) && (towers[user_move_array[0]].empty? == false) && (towers[user_move_array[1]].empty? || towers[user_move_array[1]][-1].to_i > towers[user_move_array[0]][-1].to_i)
         puts "There was an error in your input. Remember to enter your input in X,X format. Please try again."
+        #get new input
         puts "Whats your next move?" 
         print "> "
         user_move = gets.chomp
